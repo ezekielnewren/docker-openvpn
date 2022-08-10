@@ -18,9 +18,9 @@ echo $secret | jq -rM .data.private_key
 echo "</key>"
 echo "<cert>"
 echo $secret | jq -rM .data.certificate
-echo $secret | jq -rM .data.ca_chain[]
 echo "</cert>"
 echo "<ca>"
+echo $secret | jq -rM .data.ca_chain[]
 vault kv get service/secret/certificate | jq -rM .data.data.EzekielNewrenRoot
 echo "</ca>"
 echo "key-direction 1"
