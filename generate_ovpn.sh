@@ -2,7 +2,6 @@
 
 fqdn="$1"
 ttl="30d"
-ttl="24h"
 
 secret=$(vault write -format=json authority/pki/issue/ezekielnewren-dot-com common_name="$fqdn" ttl="$ttl" | jq -rMc .)
 
