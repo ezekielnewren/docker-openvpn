@@ -13,4 +13,5 @@ RUN apt-get update && apt-get install -y openvpn
 
 COPY supervisord.conf /root/supervisord.conf
 
-ENTRYPOINT ["dumb-init", "bash"]
+ENTRYPOINT ["dumb-init", "openvpn"]
+CMD ["/docker/server_tun.conf"]
