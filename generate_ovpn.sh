@@ -23,6 +23,7 @@ echo $secret | jq -rM .data.ca_chain[]
 vault kv get service/secret/certificate | jq -rM .data.data.EzekielNewrenRoot
 echo "</ca>"
 echo "key-direction 1"
+echo "auth SHA256"
 echo "<tls-auth>"
 vault kv get service/secret/openvpn | jq -rM .data.data.ta
 echo "</tls-auth>"
