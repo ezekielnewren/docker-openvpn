@@ -3,7 +3,11 @@
 fqdn="$1"
 ttl="30d"
 
-secret=$(vault write -format=json authority/pki/issue/ezekielnewren-dot-com common_name="$fqdn" ttl="$ttl" | jq -rMc .)
+secret=$(vault write -format=json authority/pki/issue/ezekielnewren-client common_name="$fqdn" ttl="$ttl" | jq -rMc .)
+if [ "$secret" == "" ]; then
+    echo "failed to generate key pair"
+    exit 1
+fi
 
 echo "client"
 echo "nobind"
@@ -20,7 +24,6 @@ echo $secret | jq -rM .data.certificate
 echo "</cert>"
 echo "<ca>"
 echo $secret | jq -rM .data.ca_chain[]
-vault kv get service/secret/certificate | jq -rM .data.data.EzekielNewrenRoot
 echo "</ca>"
 echo "key-direction 1"
 echo "auth SHA256"
