@@ -8,6 +8,7 @@
 
 
 docker build -t openvpn . || exit 1
+docker rm -f vpn_home
 docker run --name vpn_home --privileged --restart always -itd \
 -w /docker -v $PWD:/docker -v /etc/ssl:/etc/ssl --network=host \
 openvpn
