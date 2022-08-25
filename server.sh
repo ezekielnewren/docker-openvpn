@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ## rules required to be run on the host
 ## forward traffic from clients
 # sudo iptables -A FORWARD -i tun0 -s 192.168.255.0/24 -j ACCEPT
