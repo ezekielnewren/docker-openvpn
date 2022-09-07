@@ -12,7 +12,6 @@ RUN echo "deb http://as-repository.openvpn.net/as/debian jammy main">/etc/apt/so
 RUN apt-get update && apt-get install -y openvpn
 
 COPY provision.sh /provision.sh
-COPY supervisord.conf /root/supervisord.conf
 
 WORKDIR /docker
 ENTRYPOINT ["dumb-init", "--", "bash", "-c"]
