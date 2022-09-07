@@ -15,5 +15,5 @@ COPY provision.sh /provision.sh
 COPY supervisord.conf /root/supervisord.conf
 
 WORKDIR /docker
-ENTRYPOINT ["dumb-init", "--"]
-CMD ["bash", "-c", "/provision.sh && exec supervisord"]
+ENTRYPOINT ["dumb-init", "--", "bash", "-c"]
+CMD ["/provision.sh && exec supervisord"]
