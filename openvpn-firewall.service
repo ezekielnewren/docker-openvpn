@@ -1,0 +1,14 @@
+## auto add the firewall rules on boot
+# sudo cp openvpn-firewall.service /etc/systemd/system
+# sudo systemctl enable openvpn-firewall --now
+
+[Unit]
+Description=start gnome keyring for each user under /home
+
+[Service]
+WorkingDirectory=/usr/local/bin
+ExecStart=/bin/bash -c "iptables -A FORWARD -i tun0 -s 192.168.255.0/24 -j ACCEPT; iptables -t nat -I POSTROUTING -s 192.168.255.0/24 -o br0 -j MASQUERADE"
+
+[Install]
+WantedBy=multi-user.target
+
