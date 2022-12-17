@@ -3,7 +3,7 @@
 fqdn="$1"
 ttl="30d"
 
-secret=$(vault write -format=json authority/pki/issue/ezekielnewren-client common_name="$fqdn" ttl="$ttl" | jq -rMc .)
+secret=$(vault write -format=json authority/pki/issue/client common_name="$fqdn" ttl="$ttl" | jq -rMc .)
 if [ "$secret" == "" ]; then
     echo "failed to generate key pair"
     exit 1
