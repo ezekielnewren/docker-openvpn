@@ -28,7 +28,7 @@ echo "</ca>"
 echo "key-direction 1"
 echo "auth SHA256"
 echo "<tls-auth>"
-vault kv get service/secret/openvpn | jq -rM .data.data.ta
+vault kv get kv/generic/openvpn | jq -rM .data.data.ta
 echo "</tls-auth>"
 echo
 echo "redirect-gateway def1"
